@@ -23,7 +23,7 @@ interface AnalyticsData {
 }
 
 interface AnalyticsProps {
-  data?: AnalyticsData;
+  data?: AnalyticsData | null;
 }
 
 export function Analytics({ data }: AnalyticsProps) {
