@@ -7,6 +7,7 @@ import { ShopifyOrder } from '@/types/shopify'
 
 interface FileUploadProps {
   onDataProcessed: (data: {
+    orders: any;
     orderSizes: Array<{ name: string; value: number }>;
     priceRanges: Array<{ name: string; value: number }>;
     productCategories: Array<{ name: string; value: number }>;
@@ -30,6 +31,7 @@ export default function FileUpload({ onDataProcessed }: FileUploadProps) {
           } = await import('@/utils/analytics');
 
           onDataProcessed({
+            orders,
             orderSizes: processOrderSizes(orders),
             priceRanges: processPriceRanges(orders),
             productCategories: processProductCategories(orders),

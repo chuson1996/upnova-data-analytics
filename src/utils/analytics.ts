@@ -32,18 +32,18 @@ export const processOrderSizes = (orders: ShopifyOrder[]) => {
     .sort((a, b) => parseInt(a.name) - parseInt(b.name));
 };
 
-export const processPriceRanges = (orders: ShopifyOrder[]) => {
+export const processPriceRanges = (orders: ShopifyOrder[], range = 30) => {
   const prices = orders.map(order => 
     parseFloat(order.totalPriceSet.shopMoney.amount)
   ).sort((a, b) => a - b);
 
   const percentile90 = prices[Math.floor(prices.length * 0.9)];
-  const maxPrice = Math.ceil(percentile90 / 50) * 50;
-  const minPrice = Math.floor(Math.min(...prices) / 50) * 50;
+  const maxPrice = Math.ceil(percentile90 / range) * range;
+  const minPrice = Math.floor(Math.min(...prices) / range) * range;
   
   const ranges: { min: number; max: number }[] = [];
-  for (let i = minPrice; i < maxPrice; i += 50) {
-    ranges.push({ min: i, max: i + 50 });
+  for (let i = minPrice; i < maxPrice; i += range) {
+    ranges.push({ min: i, max: i + range });
   }
   ranges.push({ min: maxPrice, max: Infinity });
 
