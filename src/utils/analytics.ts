@@ -1,9 +1,12 @@
 import { ShopifyOrder } from '@/types/shopify';
-import { createContext } from 'vm';
-
-export const AnalyticsContext = createContext({
+import { createContext } from 'react';
+export const AnalyticsContext = createContext<ProviderContextType>({
   orders: [],
 });
+
+export interface ProviderContextType {
+  orders: ShopifyOrder[]
+}
 
 
 const isNotShippingProtection = (item: ShopifyOrder['lineItems']['edges'][0]) => {
