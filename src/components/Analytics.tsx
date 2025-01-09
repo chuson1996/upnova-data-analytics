@@ -1,7 +1,6 @@
 'use client'
 
-import { AnalyticsContext } from '@/app/page';
-import { processPriceRanges } from '@/utils/analytics';
+import { AnalyticsContext, processPriceRanges } from '@/utils/analytics';
 import { useContext, useState } from 'react';
 import {
   BarChart,

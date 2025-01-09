@@ -1,4 +1,10 @@
 import { ShopifyOrder } from '@/types/shopify';
+import { createContext } from 'vm';
+
+export const AnalyticsContext = createContext({
+  orders: [],
+});
+
 
 const isNotShippingProtection = (item: ShopifyOrder['lineItems']['edges'][0]) => {
   const product = item.node.product;

@@ -1,12 +1,9 @@
 'use client'
 
-import { createContext, useState } from 'react'
+import { useState } from 'react'
 import FileUpload from '@/components/FileUpload'
 import { Analytics } from '@/components/Analytics'
-
-export const AnalyticsContext = createContext({
-  orders: null,
-});
+import { AnalyticsContext } from '@/utils/analytics';
 
 export default function Home() {
   const [analyticsData, setAnalyticsData] = useState<{
